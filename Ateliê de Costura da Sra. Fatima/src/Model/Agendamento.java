@@ -6,6 +6,8 @@ package Model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,33 +18,30 @@ public class Agendamento {
     private Cliente cliente;
     private Servico servico;
     private float valor;
-    private Date data;        
+    private LocalDateTime dataHora;        
     private String observacao;
 
     private static final Logger LOGGER = Logger.getLogger(Agendamento.class.getName());
 
-    public Agendamento(int id, Cliente cliente, Servico servico, int valor, String data) {
+     // Construtor com observação
+    public Agendamento(int id, Cliente cliente, Servico servico, float valor, LocalDateTime dataHora, String observacao) {
         this.id = id;
         this.cliente = cliente;
         this.servico = servico;
         this.valor = valor;
-        try {
-            this.data = new SimpleDateFormat("dd/MM/yyyy").parse(data);
-        } catch (ParseException ex) {
-            LOGGER.log(Level.SEVERE, "Erro ao parsear a data", ex);
-        }
+        this.dataHora = dataHora; // Corrigido: usando o parâmetro dataHora
+        this.observacao = observacao; // Corrigido: atribuindo a observação corretamente
     }
 
-    public Agendamento(int id, Cliente cliente, Servico servico, int valor, String data, String observacao) {
-        this(id,cliente,servico,valor,data);
-        this.observacao = observacao;
-        
+    // Construtor sem observação
+    public Agendamento(int id, Cliente cliente, Servico servico, float valor, LocalDateTime dataHora) {
+        this(id, cliente, servico, valor, dataHora, ""); // Chamando o construtor principal com observação vazia
     }
 
     
     
     // Getters e setters
-    public int getId() {
+     public int getId() {
         return id;
     }
 
@@ -74,22 +73,24 @@ public class Agendamento {
         this.valor = valor;
     }
 
-    public Date getData() {
-        return data;
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
+    
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
     }
     
     public String getDataFormatada() {
-        return new SimpleDateFormat("dd/MM/yyyy").format(data);
-    }
-    
-    public String getHoraFormatada () {
-        return new SimpleDateFormat ("HH:mm").format(data);
-    }
-    
-    public void setData(Date data) {
-        this.data = data;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return this.dataHora.format(formatter);
     }
 
+    public String getHoraFormatada() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return this.dataHora.format(formatter);
+    }
+    
     public String getObservacao() {
         return observacao;
     }

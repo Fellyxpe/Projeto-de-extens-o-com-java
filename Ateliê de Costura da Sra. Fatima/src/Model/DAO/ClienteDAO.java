@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author tiago
+ * @author darkm
  */
 public class ClienteDAO {
     

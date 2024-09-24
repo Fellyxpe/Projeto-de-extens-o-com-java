@@ -5,6 +5,7 @@
 package view;
 
 import Controller.AgendaController;
+import java.text.SimpleDateFormat;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
@@ -15,6 +16,9 @@ import javax.swing.JTextField;
  *
  * @author darkm
  */
+
+
+
 public class Agenda extends javax.swing.JFrame {
 
     private final AgendaController controller;
@@ -22,9 +26,14 @@ public class Agenda extends javax.swing.JFrame {
     /**
      * Creates new form Agenda
      */
+    
+    
+    
     public Agenda() {
         initComponents();
         controller = new AgendaController(this);
+        jTextData = new JFormattedTextField(new SimpleDateFormat("dd/MM/yyyy"));
+        jTextHora = new JFormattedTextField(new SimpleDateFormat("HH:mm"));
         iniciar();
     }
 
@@ -246,6 +255,7 @@ public class Agenda extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Agenda().setVisible(true);
             }
@@ -346,18 +356,13 @@ public class Agenda extends javax.swing.JFrame {
         this.jTextObservacao = jTextObservacao;
     }
 
-    public JTextField getTextFormatedData() {
-        JTextField jTextFieldData;
-    
-    return jTextFieldData; 
-}
+    public JTextField getDataFormatada() {
+        return jTextData; // Certifique-se de que jTextData é um JTextField ou JFormattedTextField
+    }
 
-public JTextField getTextFormatedHora() {
-        JTextField jTextFieldHora ;
-    
-    return jTextFieldHora; 
-}
+    public JTextField getHoraFormatada() {
+        return jTextHora; // Certifique-se de que jTextHora é um JTextField ou JFormattedTextField
+    }
 
-    
-    
+
 }

@@ -10,11 +10,13 @@ import Model.Cliente;
 import Model.Servico;
 import Model.Usuario;
 import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
  *
- * @author tiago
+ * @author darkm
  */
 public class Banco {
     
@@ -34,9 +36,9 @@ public class Banco {
         
         //criando elementos
         
-        Usuario usuario1 = new Usuario(1, "barbeiro", 'M', "18/07/1990", "30212121", "rafael.novo@fmpsc.edu.br", "521454123", "barbeiro", "administrador");
+        Usuario usuario1 = new Usuario(1, "costureiro", 'M', "09/11/1990", "30212121", "darkmon480@gmail.com", "521454123", "costureiro", "administrador");
         Usuario usuario2 = new Usuario(2, "estagiario", 'M', "09/05/1996", "30212122", "jefferson.silva@aluno.fmpsc.edu.br", "451244123", "estagiario", "funcionario");
-        Usuario usuario3 = new Usuario(3, "jefferson", 'M', "18/07/1990", "4898823721", "barbeiro@barbershop.com", "12345", "12345", "proprietario");
+        Usuario usuario3 = new Usuario(3, "fatima", 'f', "18/07/1990", "4898823721", "fatima12espo190@gmail.com", "12345", "12345", "proprietario");
         Usuario usuario4 = new Usuario(4, "rafaelprofessor", 'M', "18/07/1990", "4898823721", "barbeiro@barbershop.com", "521454123", "12345", "administrador");
 
            
@@ -51,16 +53,21 @@ public class Banco {
         Cliente cliente9 = new Cliente(9, "Samuel Coltinho", 'M', "09/02/1998", "302121189", "samuelcoltinhopet@gmail.com", "74595142487", "Rua floresta 12 Canudos NH",  "9330046364");
         Cliente cliente10 = new Cliente(10, "Felipe Luis", 'M', "12/06/1999", "3021212478", "felipeluispet@gmail.com", "845713647", "Rua marechal 1023 Canudos NH",  "933000874");
         
-        Servico servico1 = new Servico(1, "Corte Simples", 18);
-        Servico servico2 = new Servico(2, "Corte Degrade", 30);
-        Servico servico3 = new Servico(3, "Barba Simples", 15);
-        Servico servico4 = new Servico(4, "Barba Desenhada", 25);
-        Servico servico5 = new Servico(5, "Sombrancelhas", 10);
-        Servico servico6 = new Servico(6, "Penteados", 35);
+        Servico servico1 = new Servico(1, "Arrumar barra", 18);
+        Servico servico2 = new Servico(2, "Costura de uniforme", 25);
+        Servico servico3 = new Servico(3, "Costura Simples", 15);
+        Servico servico4 = new Servico(4, "Aplicar pedras/Bordados", 25);
+        Servico servico5 = new Servico(5, "Pequenos ajustes", 10);
+        Servico servico6 = new Servico(6, "Criar peças personalizadas", 35);
 
-        Agendamento agendamento1 = new Agendamento(0, cliente9, servico6, 0, "28/11/2023", "14:00");
-        Agendamento agendamento2 = new Agendamento(0, cliente3, servico1, 0, "28/11/2023", "14:00");
-        Agendamento agendamento3 = new Agendamento(0, cliente5, servico3, 0, "28/11/2023", "14:00");
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+        Agendamento agendamento1 = new Agendamento(1, cliente9, servico6, 35, 
+                LocalDateTime.parse("28/11/2024 13:00", formatter), "Observação 1");
+        Agendamento agendamento2 = new Agendamento(2, cliente3, servico1, 18, 
+                LocalDateTime.parse("28/11/2024 16:00", formatter), "Observação 2");
+        Agendamento agendamento3 = new Agendamento(3, cliente5, servico3, 15, 
+                LocalDateTime.parse("28/11/2024 17:00", formatter), "Observação 3");
 
      
         //Adiciona Elementos na lista

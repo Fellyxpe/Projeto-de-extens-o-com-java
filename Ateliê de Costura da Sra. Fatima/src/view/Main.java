@@ -13,7 +13,7 @@ import Model.Usuario;
  *
  * @author darkm
  */
-public class Main {
+/*public class Main {
     
     public static void main(String[] args){
            
@@ -26,8 +26,10 @@ public class Main {
         Servico servico = new Servico (1, "arrumar barra", 30);
         System.out.print (servico.getValor());
         
-        Agendamento agendamento = new Agendamento (1, cliente, servico, 30, "09/11/2023 09:15", "cliente vai atrasar" );
+        Agendamento agendamento;
+        agendamento = new Agendamento (1, cliente, servico, 30, "09/11/2023" + "09:15", "cliente vai atrasar" );
         System.out.print (agendamento.getCliente().getNome());
     }
     
 }
+*/
